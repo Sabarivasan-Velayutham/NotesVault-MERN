@@ -1,0 +1,187 @@
+--> First setup node server and express js 
+1) give npm init and change index.js to server.js 
+2) install express js 
+3) put server file in backend folder and import the express module 
+4) no need to run the server with long command , change "scripts:start" tag of package.json to "nodemon backend/server.js"
+    and run npm start
+
+
+--> NAVBAR FOOTER LANDING_PAGE
+--> Redux , React app (Frontend folder)
+1) create react app 
+2) Create navbar and Footer 
+3) Create Landing Page
+
+
+--> LINKS AND MAISCREEN COMPONENT
+4) Start adding routes and links in landing page as well as navbar
+5) create a mainscreen.js file (component )which will hold the title of each page 
+6) now the main screen component is tested by adding it above to the mynotes page 
+
+
+--> MYNOTES PAGE
+7) now start creating the mynotes page ... create a button for adding notes 
+8) bring data file which is in backend folder into the src folder of frontend folder, so that import can be done 
+9 ) use the data file to create static notes by using Card component and iterating them to each note with styles.  
+10 ) now when clicking edit button , it should link to that specific note in a new page 
+11 ) when clicking delete button, onClick func occurs leading to delete habndler function to delete the note which can be 
+    developed later 
+12 ) Now add Accordion which is like a table drawer.Documentation is diffrent from Bootstrap V4.Some youtube commenter 
+    gave the correct code to bring the design without any error.
+
+
+-->CONNECTION BETWEEN BACKEND AND Frontend
+1) install axios in frontend folder for the 'mynotes' screen
+2) for backend connection , go to package file of frontend folder 
+3) there insert "proxy":"http://127.0.0.1:5000", where 5000 is the port number for backend 
+4) after inserting , restart the frontend server
+5) in Mynotes page , bring UseEffect and useState hook. useEffect to run the fetchNotes func() after page render.
+   useState to store the content fetched from the func() to the state variable .
+   Fetch notes using axios form backend using the link  in the fetchNotes func().
+6) we 1st hard coded the date needed to be seen in the screen by keeping a data folder inside thefrontedn folder .Now it is removed 
+    since notes data will be received from the api call func().
+
+7) from now on , u can run frontend and backend at a single terminal run . for that 
+install " npm i concurrently "
+8) change the package file in the common project folder" 
+    scripts": {
+    "start": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev":  " concurrently \"npm start\" \"npm run client\" "
+    },
+9) run command : npm run dev 
+
+
+--> MONGODB with BACKEND
+1) create a project and a cluster / database 
+2 add user and password and IP address( network access )
+3) npm i mongoose 
+4) in env file , store the mongoose uri in it which u got it from mongodb website 
+    create config folder in backend folder , create db.js file in config folder . config => db.js which is for mongoose usage 
+5) make changes in server.js and db.js files (works properly if not in college wifi)
+
+
+**************************************************************************************************
+**************************************************************************************************
+
+MOVING TO VERSION 2 :)
+--> USER AUTENTICATION in React JS , Node, Express, MongoDB with JWT 
+--> REGISTER AND LOGIN APIs
+
+---> REGISTER API <---
+1) create 3 folders in backend (controllers , routers, models)
+2) create files in controllers ,routers, models 
+3) to run only backend , npm start is enough 
+4) use postman for chking theb backend if req.body is given and response is returned as POST to browser (http:localhost:5000/api/users)
+
+--> procedure need to do in postman 
+create a collection/folder 
+create a new request in it 
+enter the url ( base url can be set as environment variable )
+now give the body content in json format in request tab
+see result in response tab
+
+5) install these => npm i bcryptjs express-async-handler jsonwebtoken 
+6) encrypt and decrpyt password in userModal 
+7) chk with database with new user for encrypted password and already available email .
+
+8) middlewares are introduced to handle errors
+
+
+--->LOGIN API <----
+1) add route in userRoutes
+2) in userController , add auth function
+3) verify status using postman by adding user to database, chking if user logged in or not , invalid credentials errors
+
+-> models       : it contains the schema of data which is for database ,( requires mongoose )
+-> routers      : contains routes of which leads to call functions which are present in controllers , ( requires controllers )
+-> controller   : it contains functions playing with requests and responses ,( requires models )
+-> middlewares  : it contains error handling codes between requests and responses (converts html error code to normal error )
+
+-->CREATE JSONWEBTOKEN (JWT)
+1) create "utils" folder and create generateToken.js file 
+2) this JWT token is used to authenticate user and share the credentials with encryption between servers and client
+
+-->FRONTEND FOR LOGIN AND REGISTER PAGEs
+1) add routes in App.js
+2) add Login and Register page files in Screens folder 
+
+**LOGIN PAGE**
+1) add the title via <MAinScreen> tag 
+2) create a form using the react bootstrap (search FORMS in react-bootstrap)
+3) add functions and states 
+4) complete the submithandler function and run both frnotend and backend at the same time (npm run dev)
+    when doing this , backend fetches data from database and gives it to frontend 
+5) adding Loading file and Error Message files in components of frontend
+6) add the useEffect hook for local storage data to check it if it works well and put that in LANDING_PAGE
+
+
+**REGISTER PAGE**
+1) add the title via <MAinScreen> tag 
+2) create a form by copying it from the Login page
+    dont forget to edit the submit handler function and config paths
+3) add functions and states 
+4) complete the submithandler function and run both frontend and backend at the same time (npm run dev)
+    when doing this , backend fetches data from database and gives it to frontend 
+    submit handler checks for password and confirm password similarity and also for other errors in the database 
+5) adding Loading file and Error Message files in components of frontend
+6) profile photo adding functionality is the remaining task in register page 
+
+7) for image uploading , create an account in Cloudinary which is used to store images and videos 
+8) after account creation, settings > upload > enable unsigned uploading > add upload preset > enter project name 
+        > change to unsigned mode > click save 
+9) Go to dashboard and copy API key ( API environment variable > click more > API base url )
+10) create the postDetails function which helps in storing the image in the cloud 
+
+11) now create the logout function and also delete the local storage 
+12) go to header file and change the action for logout 
+13 ) add an onClick function to remove localstorage and direct to '/' homepage 
+
+
+
+?-- PROBLEMS FACED --?
+problem in uploading photo to the Cloudinary
+logout works but not directing to homepage -> (rectified by changing the syntax of the Routes in App.js and using useNavigate Hook)
+
+
+?-- TIPS --?
+use the way I have used to route between pages (App.js file in frontend folder )
+no more usage of useHistory() hook , replaced with useNavigate() hook  
+
+
+
+**************************************************************************************************
+**************************************************************************************************
+
+MOVING TO VERSION 3 :)
+--> Implementing Redux in MERN Stack 
+explanation -> https://youtu.be/ZOIdBWPydZY?list=PLKhlp2qtUcSYC7EffnHzD-Ws2xG-j3aYo
+
+1) Redux involves Reducers, Store and Actions 
+2) Application to Action via useDispatch hook (Action contains Type and Payload) (what type of action application needs )
+3) Action is then passed to the Reducers
+4) Reducers move to Store and Store implements the change in state 
+
+5) cd frontend; npm i react-redux redux redux-thunk 
+   and also npm i redux-devtools-extension(for vscode) + install the same extension in browser to check if redux is 
+   working or not 
+6) create store.js in src folder 
+7) update this in index.js file of src by changing React.StrictMode to Provider store={store}
+   and importing Provider from react-redux
+8) now run the app and check the extension
+
+9) now create 3 folders in src namely constants, reducers and Actions 
+10) userConstants.js in constants folder; userReducers.js in reducers folder; userActions.js in actions folder
+11) create constants needed in userConstants.js
+12) based on those constants, create reducer in userReducer.js
+13) now add this reducer in store.js
+
+14) to fill actions.js , we have already typed the login user logic in LoginScreen.js of submithandler() func.
+    Cut the try/catch block of LoginScreen.js and paste it in actions.js with additional few lines (dispatch lines) and 
+    also remove the error and loading statehooks and then add useDispatch()
+15) Similarly to add logout logic in userActions.js, it is available in Header.js in components folder.Also edit the code in 
+    Header.js with handler.
+
+16) now add reducers and actions for registration process just like we did for login/logout process.
+    by the way, update the changes in store.js too 
+17) most of the work is done in Reducers, Actions, 
