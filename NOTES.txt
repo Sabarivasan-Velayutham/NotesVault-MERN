@@ -1,3 +1,9 @@
+**************************************************************************************************
+**************************************************************************************************
+THIS FILE IS FOR MY UNDERSTANDING PURPOSE 
+**************************************************************************************************
+**************************************************************************************************
+
 --> First setup node server and express js 
 1) give npm init and change index.js to server.js 
 2) install express js 
@@ -185,3 +191,144 @@ explanation -> https://youtu.be/ZOIdBWPydZY?list=PLKhlp2qtUcSYC7EffnHzD-Ws2xG-j3
 16) now add reducers and actions for registration process just like we did for login/logout process.
     by the way, update the changes in store.js too 
 17) most of the work is done in Reducers, Actions, 
+
+
+
+**************************************************************************************************
+**************************************************************************************************
+
+MOVING TO VERSION 4 :)
+--> Notes API with CRUD Operation in Node JS and Express JS 
+
+---ONLY BACKEND PART AND POSTMAN USAGE ... NO WORKING WITH FRONTEND---
+
+1) add route in server.js 
+2) create noteRoute.js in routers folder 
+3) run npm start in noteszipper folder and go to postman 
+
+how to use postman for this project is shown in this video
+https://youtu.be/iw5RSIflYGU
+4) GET request for just "{{URL}}" .. output we get "API is running" (checking method)
+
+5) create noteModel.js in Models folder
+6) now add routes in noteRoute.js 
+7) create noteController.js and update file in noteRoutes.js and now go to postman 
+
+8) in postman , create a folder .. within it add a get request /api/notes to display notes 
+
+9) now add authMiddleware.js -> protect function in middleware is used when a user
+   logs in and puts the protect func before the getNotes API ... in simple terms , user has to pass this 
+   middleware to reach the getNotes API
+10) go to postman , change auth to "Bearer Token" to check authentication ("https://youtu.be/N4p6qbzt_K0?list=PLKhlp2qtUcSYC7EffnHzD-Ws2xG-j3aYo&t=710")
+
+
+--> LETS MOVE TO CREATE NOTES API 
+11) add createNote func() in controller.js and update that in routes file and 
+    go to postman and add POST /api/notes/create 
+        ("https://youtu.be/N4p6qbzt_K0?list=PLKhlp2qtUcSYC7EffnHzD-Ws2xG-j3aYo&t=961")
+    this video section explains to add a sample note by giving it in the body section
+
+
+--> GET NOTE BY SINGLE ID
+12) same procedure , add getNoteByID func() in controller.js and update that in routes file and 
+    go to postman and add GET /api/notes/:id 
+    ("https://youtu.be/N4p6qbzt_K0?list=PLKhlp2qtUcSYC7EffnHzD-Ws2xG-j3aYo&t=1174")
+
+
+--> UPDATE NOTE BY USER
+13) same procedure , add updateNote func() in controller.js and update that in routes file and 
+    go to postman and add PUT /api/notes/:id 
+    ("https://youtu.be/N4p6qbzt_K0?list=PLKhlp2qtUcSYC7EffnHzD-Ws2xG-j3aYo&t=1500")
+
+
+--> DELETE NOTE BY USER
+14) same procedure , add deleteNote func() in controller.js and update that in routes file and 
+    go to postman and add  /api/notes/:id 
+    ("https://youtu.be/N4p6qbzt_K0?list=PLKhlp2qtUcSYC7EffnHzD-Ws2xG-j3aYo&t=1678")\
+
+
+--- BACKEND PART AND POSTMAN USAGE OVER ... FRONTEND WORK STARTED ---
+("https://youtu.be/fYBlrsy0cx4?list=PLKhlp2qtUcSYC7EffnHzD-Ws2xG-j3aYo")
+
+--> LISTING ALL NOTES UI
+
+1) create noteConstants.js in Constants folder and add NOTES LIST constants
+2) now create reducer for it ... notesReducer.js and add noteListReducer function to it 
+3) add this reducer to store 
+4) now create actions for it ... notesAction.js ..listNote action 
+
+5) go to Mynotes.js and remove states and repplace it with dispatch functions
+    fetchnotes function is also replaced ... change useEffect hook too
+6) make changes to useEffect hook and navigate to loginpage incase logged out 
+7) change the header welcome name dynamically 
+8) change footer to add current date 
+
+?-- PROBLEMS FACED --?
+    Cannot read properties of undefined (reading 'map')
+    TypeError: Cannot read properties of undefined (reading 'map') -> while using map function
+    After adding a '?' , the problem got solved 
+
+
+--> CREATING NOTES UI
+
+1) add NOTES CREATE constants in noteConstant.js
+2) add create reducers 
+3) add to store 
+4) now create actions for it ... notesAction.js ..createNote action 
+5) create a route for creating notes 
+6) create a createNote in screens folder and run "npm i react-markdown"
+    markdown is used similar way we don it in github readme file preview 
+7) add dispatch, selectors and changes to useeffect hook
+
+
+--> UPDATING NOTES UI
+1) add NOTES UPDATE constants in noteConstant.js
+2) add update reducers 
+3) add to store 
+4) now create actions for it ... notesAction.js ..updateNote action 
+5) create a route for editing notes (SingleNote in screens folder) 
+
+--> DELETE NOTES UI
+similar process for update notes except for new page is not displayed 
+just asks confirmation if you want to delete or not
+
+
+--> SEARCHING NOTES 
+1) add useState in App.js and a Header with a prop in App.js 
+2) pass a prop in Header.js component ... setSearch prop
+    similarly in MyNotes.js page too ... search prop 
+3) update mynotes route as a function to pass the parameter 
+4) go to header component and add onchange function to search bar 
+5) go to Mynotes and add filtering function in the notes.map section 
+
+
+**************************************************************************************************
+**************************************************************************************************
+
+SAME VERSION 4 :)
+--> User Profile Functionality
+
+1) add router for profile update in backend
+2) create controller for update profile 
+("https://youtu.be/KrAS6_s-goY?list=PLKhlp2qtUcSYC7EffnHzD-Ws2xG-j3aYo&t=368") for postman testing for updating profile 
+
+3) now moving to UI work ... crete constants, reducers, actions for update profile and put in store 
+4) create a ProfileScreen in screens folder and add its route in App.js 
+5) we have prevented moving back to login page when user is logged in using useEffect hook in landing page and profile page 
+
+
+**************************************************************************************************
+**************************************************************************************************
+
+FINAL VERSION  :)
+--> Project Deployment
+
+1) go to env file and change NODE_ENV = development to NODE_ENV = production
+2) change mongodb url for using atlas 
+2) go to server.js and add deployment set of codes 
+3) run "npm run build" inside frontend folder
+4) /frontend/build -->  add this in gitignore file which is outside
+
+5) before pushing to github, remove the gitignore file from frontend folder 
+6) before pushing, check the gitignore file if all are correct or not 
+7) use render.com to deploy website 
