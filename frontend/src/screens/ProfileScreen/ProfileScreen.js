@@ -13,6 +13,7 @@ const ProfileScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -34,7 +35,14 @@ const ProfileScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(updateProfile({ name, email, password}));
+
+    if (password !== confirmPassword) {
+      setMessage("Passwords do not match");
+    } else {
+      setMessage("");
+      dispatch(updateProfile({ name, email, password }));
+    }
+
   };
 
   return (
@@ -42,14 +50,17 @@ const ProfileScreen = () => {
       <div>
         <Row className="profileContainer">
           <Col md={6}>
+            {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
+            {loading && <Loading />}
+            {success && (
+              <ErrorMessage variant="success">
+                Updated Successfully
+              </ErrorMessage>
+            )}
+            {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+
             <Form onSubmit={submitHandler}>
-              {loading && <Loading />}
-              {success && (
-                <ErrorMessage variant="success">
-                  Updated Successfully
-                </ErrorMessage>
-              )}
-              {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+
               <Form.Group controlId="name">
                 <Form.Label>Name</Form.Label>
                 <Form.Control

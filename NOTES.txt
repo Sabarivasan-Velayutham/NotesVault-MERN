@@ -331,4 +331,7 @@ FINAL VERSION  :)
 
 5) before pushing to github, remove the gitignore file from frontend folder 
 6) before pushing, check the gitignore file if all are correct or not 
+7) add this in outside package.json file 
+    -> "build": "cd backend && npm install  && cd ../frontend && npm install && npm run build",
+        in scripts section, so that deploy can be made 
 7) use render.com to deploy website 
