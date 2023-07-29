@@ -335,3 +335,4 @@ FINAL VERSION  :)
     -> "build": "cd backend && npm install  && cd ../frontend && npm install && npm run build",
         in scripts section, so that deploy can be made 
 7) use render.com to deploy website 
+8) use this video for reference ("https://youtu.be/jF0PX9eBRAE") for website deployment
