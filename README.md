@@ -1,4 +1,4 @@
-# NotesZipper-MERN
+# NotesVault-MERN
 
 NotesZipper-MERN is a web application that allows users to create and manage notes efficiently. It is built using the MERN stack (MongoDB, Express, React, Node.js), providing a seamless and user-friendly experience.
 
