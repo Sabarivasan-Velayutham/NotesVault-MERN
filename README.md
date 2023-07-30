@@ -1,1 +1,1 @@
-# NotesZipper-MERN
+# NoteVault-MERN
