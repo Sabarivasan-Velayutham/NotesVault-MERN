@@ -1,16 +1,18 @@
 
-// import './App.css';
+import React, { lazy } from 'react';
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import LandingPage from "./screens/LandingPage/LandingPage";
-import LoginScreen from "./screens/LoginScreen/LoginScreen";
-import MyNotes from "./screens/MyNotes/MyNotes";
-import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
-import SingleNote from "./screens/SingleNote/SingleNote";
-import CreateNote from "./screens/SingleNote/CreateNote";
-import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
-import { useState } from "react";
+
+const LandingPage = lazy(() => import('./screens/LandingPage/LandingPage'));
+const LoginScreen = lazy(() => import('./screens/LoginScreen/LoginScreen'));
+const RegisterScreen = lazy(() => import('./screens/RegisterScreen/RegisterScreen'));
+const MyNotes = lazy(() => import('./screens/MyNotes/MyNotes'));
+const SingleNote = lazy(() => import('./screens/SingleNote/SingleNote'));
+const CreateNote = lazy(() => import('./screens/SingleNote/CreateNote'));
+const ProfileScreen = lazy(() => import('./screens/ProfileScreen/ProfileScreen'));
 
 function App() {
   const [search, setSearch] = useState("");
