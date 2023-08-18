@@ -326,6 +326,7 @@ FINAL VERSION  :)
 1) go to env file and change NODE_ENV = development to NODE_ENV = production
 2) change mongodb url for using atlas 
 2) go to server.js and add deployment set of codes 
+    also add "const path = require("path");" in server.js file 
 3) run "npm run build" inside frontend folder
 4) /frontend/build -->  add this in gitignore file which is outside
 
