@@ -1,5 +1,5 @@
 
-import React, { lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
@@ -21,15 +21,17 @@ function App() {
     <BrowserRouter>
       <Header setSearch={(s) => setSearch(s)} />
       <main className="App">
-        <Routes>
-          <Route path="/" element={<LandingPage />} exact />
-          <Route path="/login" element={<LoginScreen />} exact />
-          <Route path="/register" element={<RegisterScreen />} exact />
-          <Route path="/mynotes" element={<MyNotes search={search} />} />
-          <Route path="/note/:id" element={<SingleNote />} exact />
-          <Route path="/createnote" element={<CreateNote />} exact />
-          <Route path="/profile" element={<ProfileScreen />} exact />
-        </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<LandingPage />} exact />
+            <Route path="/login" element={<LoginScreen />} exact />
+            <Route path="/register" element={<RegisterScreen />} exact />
+            <Route path="/mynotes" element={<MyNotes search={search} />} />
+            <Route path="/note/:id" element={<SingleNote />} exact />
+            <Route path="/createnote" element={<CreateNote />} exact />
+            <Route path="/profile" element={<ProfileScreen />} exact />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
     </BrowserRouter>
