@@ -30,7 +30,7 @@ export const listNotes = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/notes`, config);
+    const { data } = await axios.get(`https://notevault-backend.onrender.com/api/notes`, config);
 
     dispatch({
       type: NOTES_LIST_SUCCESS,
@@ -69,7 +69,7 @@ export const createNoteAction = (title, content, category) => async (
     };
 
     const { data } = await axios.post(
-      `/api/notes/create`,
+      `https://notevault-backend.onrender.com/api/notes/create`,
       { title, content, category },
       config
     );
@@ -106,7 +106,7 @@ export const deleteNoteAction = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.delete(`/api/notes/${id}`, config);
+    const { data } = await axios.delete(`https://notevault-backend.onrender.com/api/notes/${id}`, config);
 
     dispatch({
       type: NOTES_DELETE_SUCCESS,
@@ -143,7 +143,7 @@ export const updateNoteAction = (id, title, content, category) => async (dispatc
     };
 
     const { data } = await axios.put(
-      `/api/notes/${id}`,
+      `https://notevault-backend.onrender.com/api/notes/${id}`,
       { title, content, category },
       config
     );

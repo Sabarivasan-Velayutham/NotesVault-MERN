@@ -23,7 +23,7 @@ import {
       };
   
       const { data } = await axios.post(
-        "/api/users/login",
+        "https://notevault-backend.onrender.com/api/users/login",
         { email, password },
         config
       );
@@ -58,7 +58,7 @@ import {
       };
   
       const { data } = await axios.post(
-        "/api/users",
+        "https://notevault-backend.onrender.com/api/users",
         { name, pic, email, password },
         config
       );
@@ -94,7 +94,7 @@ import {
         },
       };
   
-      const { data } = await axios.post("/api/users/profile", user, config);
+      const { data } = await axios.post("https://notevault-backend.onrender.com/api/users/profile", user, config);
   
       dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
   
