@@ -21,7 +21,7 @@ function App() {
     <BrowserRouter>
       <Header setSearch={(s) => setSearch(s)} />
       <main className="App">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div></div>}>
           <Routes>
             <Route path="/" element={<LandingPage />} exact />
             <Route path="/login" element={<LoginScreen />} exact />
