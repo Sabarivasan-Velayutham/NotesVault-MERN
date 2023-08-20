@@ -6,6 +6,7 @@ const connectDB = require("./config/db")
 const userRoutes = require("./routers/userRoutes")
 const noteRoutes = require("./routers/noteRoutes")
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware")
+const cors= require("cors");
 const path = require("path");
 
 dotenv.config();
@@ -13,6 +14,7 @@ connectDB();
 const app = express()
 app.use(express.json())
 
+app.use(cors())
 const PORT = process.env.PORT || 5000;
 app.listen(
     PORT,
