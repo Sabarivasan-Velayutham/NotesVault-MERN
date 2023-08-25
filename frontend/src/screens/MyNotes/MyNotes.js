@@ -100,7 +100,7 @@ function MyNotes({ search }) {
                     </span>
 
                     <div>
-                      <Button href={`/notes/${note._id}`}>Edit</Button>
+                      <Button href={`/note/${note._id}`}>Edit</Button>
                       <Button
                         variant="danger"
                         className="mx-2"
