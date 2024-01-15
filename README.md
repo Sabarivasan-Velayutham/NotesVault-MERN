@@ -10,3 +10,6 @@ NotesVault-MERN is a web application that allows users to create and manage note
 4) Configure the MongoDB connection string in the backend to connect to your local or remote MongoDB database.<br>
 5) Run the whole application using ```npm run dev``` in the root directory<br>
 6) The application should now be accessible at http://localhost:3000 in your web browser
+
+![image](https://github.com/Sabarivasan-Velayutham/NotesVault-MERN/assets/84288319/c2303e59-183b-4682-8488-df41b9f6292a)
+
